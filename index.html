@@ -702,6 +702,36 @@
 }
 
     </style>
+    <script>
+      // Make sure this code is in your app.js file or add it if it's not there
+
+// Handle mobile menu toggle
+const hamburgerMenu = document.querySelector(".hamburger-menu");
+const links = document.querySelector(".links");
+
+hamburgerMenu.addEventListener("click", () => {
+  links.classList.toggle("active");
+  hamburgerMenu.classList.toggle("active");
+});
+
+// Close mobile menu when clicking on a link
+const navLinks = document.querySelectorAll(".links ul li a");
+
+navLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    links.classList.remove("active");
+    hamburgerMenu.classList.remove("active");
+  });
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener("click", (e) => {
+  if (!hamburgerMenu.contains(e.target) && !links.contains(e.target)) {
+    links.classList.remove("active");
+    hamburgerMenu.classList.remove("active");
+  }
+});
+    </script>
 
   </body>
 </html>
